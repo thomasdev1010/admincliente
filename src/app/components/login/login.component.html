@@ -1,0 +1,22 @@
+<div class="body">
+    <div class="login">
+        <form *ngIf="!loging" [formGroup]="form" (ngSubmit)="ingresar()">
+            <img src="../../../assets/img/usuario.png" width="30%">
+            <h1 class="h3 mb-3 fw-normal">Login</h1>
+            <mat-form-field class="medida" appearance="fill">
+                <mat-label>Usuario</mat-label>
+                <input type="text" matInput autocomplete="off" formControlName="usuario">
+            </mat-form-field>
+            <mat-form-field class="medida" appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput autocomplete="off" formControlName="password">
+            </mat-form-field>
+            <br>
+            <button type="submit" class="medida" mat-raised-button mat-button color="primary" 
+            [disabled]="form.invalid">Iniciar Sesion</button> 
+
+        </form>
+        <br>
+        <mat-progress-bar *ngIf="loging" mode="indeterminate"></mat-progress-bar>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Agregar Nuevo Cliente</span>
+    </mat-toolbar>
+    <mat-card style="margin-top: 3%;">
+            <form [formGroup]="form" (ngSubmit)="agregarCliente()" >
+                <mat-grid-list cols="4" rowHeight="80px">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="medida" appearance="fill">
+                            <mat-label>No Documento</mat-label>
+                            <input type="text" matInput autocomplete="off" formControlName="documento">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="medida" appearance="fill">
+                            <mat-label>Nombre</mat-label>
+                            <input type="text" matInput autocomplete="off" formControlName="nombre">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="medida" appearance="fill">
+                            <mat-label>Apellido</mat-label>
+                            <input type="text" matInput autocomplete="off" formControlName="apellido">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    
+                    <mat-grid-tile [colspan]="1" [rowspan]="3">
+                        <img src="./assets/img/usuario.png" width="230" height="230" >
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="medida" >
+                            <mat-label>Celular</mat-label>
+                            <input type="text" matInput autocomplete="off" formControlName="celular">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="medida" >
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput autocomplete="off" formControlName="email" >
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="medida" >
+                            <mat-label>Direccion</mat-label>
+                            <input type="text" matInput autocomplete="off" formControlName="direccion">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="3" [rowspan]="1">
+                        <div class="demo-button-container">
+                            <button type="submit" mat-raised-button color="primary"  
+                            matTooltip="Guardar Nuevo Cliente" 
+                           style="margin-right: 20px;" [disabled]="form.invalid" class="demo-button">
+                              Guardar
+                            </button>
+                            <button
+                                mat-raised-button matTooltip="Regresar a Listado de Cliente"
+                                class="demo-button">
+                              Regresar
+                            </button>
+                          </div>
+                    </mat-grid-tile> 
+                </mat-grid-list>
+            </form>
+      </mat-card>
+</div>

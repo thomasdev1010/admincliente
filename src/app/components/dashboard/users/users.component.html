@@ -1,0 +1,81 @@
+<div class="container">
+    <mat-toolbar>
+        <span>LISTA DE CLIENTES</span>
+        <div class="example-spacer"></div>
+        <button mat-raised-button color="primary" routerLink = "/dashboard/add-cliente"  >
+            Nuevo Cliente
+        </button>
+    </mat-toolbar>
+    
+    <div *ngIf="listUsers.length > 0">
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+    
+    <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort >
+
+        <!-- No Documento Column -->
+        <ng-container matColumnDef="documento">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> No. Documento </th>
+          <td mat-cell *matCellDef="let element"> {{element.documento}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header > Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+      
+        <!-- Apellido Column -->
+        <ng-container matColumnDef="apellido">
+          <th mat-header-cell *matHeaderCellDef> Apellido </th>
+          <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+        </ng-container>
+      
+        <!-- Correo Column -->
+        <ng-container matColumnDef="correo">
+          <th mat-header-cell *matHeaderCellDef> Correo</th>
+          <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="celular">
+            <th mat-header-cell *matHeaderCellDef> Celular </th>
+            <td mat-cell *matCellDef="let element"> {{element.celular}} </td>
+          </ng-container>
+        
+          <!-- Direccion Column -->
+          <ng-container matColumnDef="direccion">
+            <th mat-header-cell *matHeaderCellDef> Direccion</th>
+            <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element; let i = index" style="text-align: center;">
+                <a class="pointer" routerLink = "/dashboard/see-cliente" style="color: blue;" matTooltip="Visualizar Cliente">
+                    <mat-icon>search</mat-icon>
+                </a>
+                <a class="pointer" style="color: rgb(3, 128, 40);" 
+                routerLink = "/dashboard/edit-cliente" matTooltip="Actualizar Cliente">
+                    <mat-icon>edit</mat-icon>
+                </a>
+                <a class="pointer" (click)="eliminarUser(i)" style="color: rgb(255, 0, 0);" matTooltip="Eliminar Cliente">
+                    <mat-icon>delete</mat-icon>
+                </a>
+            </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>
+</div>
+
+<h2 *ngIf="listUsers.length == 0">Lista de Clientes Vacia</h2>
+      
+</div>
